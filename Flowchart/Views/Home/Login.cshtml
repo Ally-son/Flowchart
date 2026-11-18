@@ -1,0 +1,142 @@
+﻿@{
+    ViewBag.Title = "FlashFlow — Login & Register";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FlashFlow — Login & Register</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/LogIn.css" />
+</head>
+<body>
+    <main class="auth-wrapper">
+        <div class="auth-card">
+
+            <!-- Left Brand Showcase Panel -->
+            <section class="brand-panel">
+                <div class="circle-decor circle-top"></div>
+                <div class="circle-decor circle-bottom"></div>
+
+                <div class="brand-header">
+                    <div class="brand-icon-box">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="4" y="4" width="12" height="12" rx="2.5"></rect>
+                            <path d="M8 20h10a2 2 0 0 0 2-2V8"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="brand-title">FlashFlow</h1>
+                        <p class="brand-subtitle">Flashcard Study Manager</p>
+                    </div>
+                </div>
+
+                <div class="brand-hero">
+                    <h2>Ready to Study?</h2>
+                    <p>
+                        Organize your course notes into bite-sized flashcards, track your progress, and review every topic at your own pace.
+                    </p>
+
+                    <div class="mini-stats">
+                        <div class="mini-stat-pill">
+                            <span class="mini-stat-label">Subjects</span>
+                            <span class="mini-stat-value">4 Active</span>
+                        </div>
+                        <div class="mini-stat-pill">
+                            <span class="mini-stat-label">Study Progress</span>
+                            <span class="mini-stat-value">75% Mastered</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="brand-footer">
+                    <span>Simple. Focused. Student-ready.</span>
+                </div>
+            </section>
+
+            <!-- Right Forms Panel -->
+            <section class="form-panel">
+                <!-- View Switcher Tabs -->
+                <div class="auth-tabs" role="tablist">
+                    <button type="button" class="tab-btn active" id="tab-login" data-target="login-form">
+                        Sign In
+                    </button>
+                    
+                        <a href="@Url.Action("Register", "Home")" class="tab-btn">
+                            Create Account
+                        </a>
+                    
+                </div>
+
+                <!-- Feedback Banner -->
+                <div id="status-banner" class="status-banner hidden" role="alert"></div>
+
+                <!-- LOGIN FORM -->
+                <form id="login-form" class="auth-form active" novalidate>
+                    <div class="form-header">
+                        <h3>Welcome back</h3>
+                        <p>Enter your credentials to access your flashcards.</p>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="login-email">Email Address</label>
+                        <div class="input-wrapper">
+                            <input type="email"
+                                   id="login-email"
+                                   placeholder="student@university.edu"
+                                   required />
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="login-password">Password</label>
+                        <div class="input-wrapper">
+                            <input type="password"
+                                   id="login-password"
+                                   placeholder="Enter your password"
+                                   required />
+                            <button type="button"
+                                    class="toggle-password"
+                                    data-input="login-password"
+                                    aria-label="Toggle password visibility">
+                                Show
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Keep me signed in & Forgot password aligned on the same row -->
+                    <div class="checkbox-row">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="remember-me" checked />
+                            <span>Keep me signed in</span>
+                        </label>
+                        <a href="#" class="forgot-link" id="forgot-password-link">Forgot password?</a>
+                    </div>
+
+                    <button type="submit" class="btn-primary">
+                        Sign In to Dashboard &rarr;
+                    </button>
+
+                    <p class="switch-prompt">
+                        Don't have an account yet?
+            
+                        <a href="@Url.Action("Register", "Home")" class="link-btn">
+                            Create one
+                        </a>
+                    </p>
+                </form>
+
+                
+            </section>
+
+        </div>
+    </main>
+
+    <script src="~/Scripts/auth.js"></script>
+</body>
+</html>

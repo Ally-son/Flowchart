@@ -1,0 +1,148 @@
+﻿@{
+    ViewBag.Title = "FlashFlow — Create Account";
+    Layout = null; /* Standalone view to bypass default MVC layout conflicts */
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FlashFlow — Create Account</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/LogIn.css" />
+</head>
+<body>
+    <main class="auth-wrapper">
+        <div class="auth-card">
+
+            <!-- Left Brand Showcase Panel -->
+            <section class="brand-panel">
+                <div class="circle-decor circle-top"></div>
+                <div class="circle-decor circle-bottom"></div>
+
+                <div class="brand-header">
+                    <div class="brand-icon-box">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="4" y="4" width="12" height="12" rx="2.5"></rect>
+                            <path d="M8 20h10a2 2 0 0 0 2-2V8"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="brand-title">FlashFlow</h1>
+                        <p class="brand-subtitle">Flashcard Study Manager</p>
+                    </div>
+                </div>
+
+                <div class="brand-hero">
+                    <h2>Start Learning Smarter</h2>
+                    <p>
+                        Create your account to organize subjects, build custom flashcards, and master your courses faster than ever.
+                    </p>
+
+                    <div class="mini-stats">
+                        <div class="mini-stat-pill">
+                            <span class="mini-stat-label">Decks</span>
+                            <span class="mini-stat-value">Unlimited</span>
+                        </div>
+                        <div class="mini-stat-pill">
+                            <span class="mini-stat-label">Progress</span>
+                            <span class="mini-stat-value">Real-Time</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="brand-footer">
+                    <span>Simple. Focused. Student-ready.</span>
+                </div>
+            </section>
+
+            <!-- Right Forms Panel -->
+            <section class="form-panel">
+                <!-- View Switcher Tabs -->
+                <div class="auth-tabs" role="tablist">
+                    <a href="@Url.Action("Login", "Home")" class="tab-btn">
+                        Sign In
+                    </a>
+                    <button type="button" class="tab-btn active" id="tab-register">
+                        Create Account
+                    </button>
+                </div>
+
+                <!-- Feedback Banner -->
+                <div id="status-banner" class="status-banner hidden" role="alert"></div>
+
+                <!-- REGISTER FORM -->
+                <form id="register-form" class="auth-form active" novalidate>
+                    <div class="form-header">
+                        <h3>Create your account</h3>
+                        <p>Start organizing your subjects and study decks today.</p>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="reg-name">Full Name</label>
+                        <div class="input-wrapper">
+                            <input type="text"
+                                   id="reg-name"
+                                   placeholder="e.g., Alex Rivera"
+                                   required />
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="reg-email">Email Address</label>
+                        <div class="input-wrapper">
+                            <input type="email"
+                                   id="reg-email"
+                                   placeholder="student@university.edu"
+                                   required />
+                        </div>
+                    </div>
+
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label for="reg-password">Password</label>
+                            <div class="input-wrapper">
+                                <input type="password"
+                                       id="reg-password"
+                                       placeholder="Min. 6 chars"
+                                       required />
+                                <button type="button"
+                                        class="toggle-password"
+                                        data-input="reg-password"
+                                        aria-label="Toggle password visibility">
+                                    Show
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="reg-confirm">Confirm Password</label>
+                            <div class="input-wrapper">
+                                <input type="password"
+                                       id="reg-confirm"
+                                       placeholder="Re-enter"
+                                       required />
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-primary">
+                        Create Account &rarr;
+                    </button>
+
+                    <p class="switch-prompt">
+                        Already have an account?
+                        <a href="@Url.Action("Login", "Home")" class="link-btn">Sign in</a>
+                    </p>
+                </form>
+            </section>
+
+        </div>
+    </main>
+
+    <script src="~/Scripts/auth.js"></script>
+</body>
+</html>

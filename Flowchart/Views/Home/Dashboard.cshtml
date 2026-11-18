@@ -1,0 +1,360 @@
+﻿ @{
+    Layout = null;
+     }
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FlashFlow – Flashcard Study Manager</title>
+    <link rel="stylesheet" href="~/Content/Dashboard.css" />
+</head>
+<body>
+
+    <!-- SHARED SIDEBAR NAVIGATION -->
+    <aside class="sidebar">
+        <div>
+            <a href="#dashboard" class="brand" onclick="switchPage('dashboard', event)">
+                <div class="brand-icon" aria-hidden="true">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="4" width="14" height="11" rx="2.5"></rect>
+                        <path d="M7 19h12a2 2 0 0 0 2-2V8"></path>
+                        <path d="M8 9.5h5"></path>
+                    </svg>
+                </div>
+                <div>
+                    <div class="brand-name">FlashFlow</div>
+                    <span class="brand-tagline">Flashcard Study Manager</span>
+                </div>
+            </a>
+
+            <nav aria-label="Primary Navigation">
+                <ul class="nav-menu">
+                    <li>
+                        <a href="#dashboard" class="nav-link active" id="nav-dashboard" onclick="switchPage('dashboard', event)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="3" width="7" height="7" rx="1.5"></rect>
+                                <rect x="14" y="3" width="7" height="7" rx="1.5"></rect>
+                                <rect x="3" y="14" width="7" height="7" rx="1.5"></rect>
+                                <rect x="14" y="14" width="7" height="7" rx="1.5"></rect>
+                            </svg>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#study" class="nav-link" id="nav-study" onclick="switchPage('study', event)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                            </svg>
+                            Study Flashcards
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#flashcards" class="nav-link" id="nav-flashcards" onclick="switchPage('flashcards', event)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+                                <path d="M7 10h10"></path>
+                                <path d="M7 14h6"></path>
+                            </svg>
+                            My Flashcards
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#add" class="nav-link" id="nav-add" onclick="switchPage('add', event)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="9"></circle>
+                                <path d="M12 8v8"></path>
+                                <path d="M8 12h8"></path>
+                            </svg>
+                            Add Flashcard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#categories" class="nav-link" id="nav-categories" onclick="switchPage('categories', event)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h6v6H4z"></path>
+                                <path d="M14 4h6v6h-6z"></path>
+                                <path d="M4 14h6v6H4z"></path>
+                                <path d="M14 17h6"></path>
+                            </svg>
+                            Categories
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="main-content">
+
+        <!-- PAGE 1: DASHBOARD -->
+        <section id="dashboard" class="app-section active-page">
+            <div class="hero-banner">
+                <div class="hero-text">
+                    <h1>Ready to Study?</h1>
+                    <p>Organize your course notes into bite-sized flashcards, track your progress, and review every topic at your own pace.</p>
+                </div>
+                <div class="hero-actions">
+                    <button type="button" class="btn-hero-white" onclick="switchPage('study', event)">Start Studying &rarr;</button>
+                    <button type="button" class="btn-hero-glass" onclick="switchPage('add', event)">+ Create Flashcard</button>
+                </div>
+            </div>
+
+            <div class="summary-grid">
+                <div class="summary-card" onclick="switchPage('flashcards', event)">
+                    <div class="summary-icon">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                            <rect x="3" y="4" width="18" height="16" rx="2.5"></rect>
+                            <path d="M7 9h10"></path>
+                            <path d="M7 13h7"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="summary-label">Total Flashcards</div>
+                        <div class="summary-number" id="total-cards-count">12 Cards</div>
+                        <div class="summary-subtext">View all saved cards &rarr;</div>
+                    </div>
+                </div>
+
+                <div class="summary-card" onclick="switchPage('categories', event)">
+                    <div class="summary-icon">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="summary-label">Categories</div>
+                        <div class="summary-number">4 Subjects</div>
+                        <div class="summary-subtext">Browse categories &rarr;</div>
+                    </div>
+                </div>
+
+                <div class="summary-card" onclick="switchPage('study', event)">
+                    <div class="summary-icon">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="summary-label">Study Progress</div>
+                        <div class="summary-number">75%</div>
+                        <div class="progress-track" aria-label="75 percent study progress">
+                            <div class="progress-fill"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-header">
+                <h2 class="section-title">Recently Added Flashcards</h2>
+                <span class="recent-link" onclick="switchPage('flashcards', event)">View all flashcards &rarr;</span>
+            </div>
+
+            <div class="recent-grid">
+                <article class="recent-card">
+                    <div>
+                        <div class="recent-top">
+                            <span class="category-badge">Object Oriented Programming 101</span>
+                            <span class="date-label">Added Nov 15, 2026</span>
+                        </div>
+                        <h3 class="recent-question">What is the difference between a Class and an Object?</h3>
+                    </div>
+                    <span class="recent-link" onclick="switchPage('study', event)">Review card &rarr;</span>
+                </article>
+
+                <article class="recent-card">
+                    <div>
+                        <div class="recent-top">
+                            <span class="category-badge">Information Management</span>
+                            <span class="date-label">Added Nov 14, 2026</span>
+                        </div>
+                        <h3 class="recent-question">What is Data?</h3>
+                    </div>
+                    <span class="recent-link" onclick="switchPage('study', event)">Review card &rarr;</span>
+                </article>
+
+                <article class="recent-card">
+                    <div>
+                        <div class="recent-top">
+                            <span class="category-badge">Data Structure and Algorithm</span>
+                            <span class="date-label">Added Nov 12, 2026</span>
+                        </div>
+                        <h3 class="recent-question">Which data structure operates on a Last-In, First-Out (LIFO) principle?</h3>
+                    </div>
+                    <span class="recent-link" onclick="switchPage('study', event)">Review card &rarr;</span>
+                </article>
+            </div>
+        </section>
+
+        <!-- PAGE 2: STUDY FLASHCARDS -->
+        <section id="study" class="app-section">
+            <div class="page-header">
+                <div>
+                    <h1 class="page-title">Study Flashcards</h1>
+                    <p class="page-subtitle">Focus on one card at a time and test your recall in order</p>
+                </div>
+                <button type="button" class="btn-secondary" onclick="switchPage('add', event)">+ Add New Card</button>
+            </div>
+
+            <div class="study-workspace">
+                <div class="study-toolbar">
+                    <div class="search-box">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                        <input type="text" id="study-search" placeholder="Filter flashcards by keyword..." oninput="filterStudyCards()" />
+                    </div>
+                    <div class="position-pill" id="card-position-indicator">Card 1 of 3</div>
+                </div>
+
+                <div class="active-flashcard">
+                    <span class="card-category-tag" id="active-category">Object Oriented Programming 101</span>
+                    <h2 class="flashcard-question" id="active-question">What is the difference between a Class and an Object?</h2>
+
+                    <input type="checkbox" id="reveal-toggle" class="answer-checkbox" />
+                    <label for="reveal-toggle" class="btn-reveal" id="reveal-btn-label">Show Answer</label>
+
+                    <div class="answer-reveal-box" id="active-answer-box">
+                        <div class="answer-label">Answer</div>
+                        <p id="active-answer">A class is a blueprint or template for creating objects, while an object is an instance of a class with specific states and behaviors.</p>
+                    </div>
+                </div>
+
+                <div class="card-nav-controls">
+                    <button type="button" class="btn-secondary" onclick="prevCard()">&larr; Previous Card</button>
+                    <button type="button" class="btn-primary" onclick="nextCard()">Next Card &rarr;</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 3: MY FLASHCARDS -->
+        <section id="flashcards" class="app-section">
+            <div class="page-header">
+                <div>
+                    <h1 class="page-title">My Flashcards</h1>
+                    <p class="page-subtitle">Manage, edit, or delete your saved study deck</p>
+                </div>
+                <button type="button" class="btn-primary" onclick="switchPage('add', event)">+ Add New Card</button>
+            </div>
+
+            <div class="card-panel">
+                <div class="library-controls">
+                    <div class="library-search">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                        <input type="text" id="library-search-input" placeholder="Search saved flashcards..." oninput="renderLibrary()" />
+                    </div>
+                    <select class="category-select" id="library-category-filter" onchange="renderLibrary()">
+                        <option value="all">All Categories</option>
+                        <option value="Object Oriented Programming 101">Object Oriented Programming 101</option>
+                        <option value="Information Management">Information Management</option>
+                        <option value="Data Structure and Algorithm">Data Structure and Algorithm</option>
+                    </select>
+                </div>
+
+                <div class="saved-list" id="saved-flashcards-list">
+                    <!-- Dynamically populated via JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 4: ADD FLASHCARD -->
+        <section id="add" class="app-section">
+            <div class="page-header">
+                <div>
+                    <h1 class="page-title">Add New Flashcard</h1>
+                    <p class="page-subtitle">Create a new question and answer pair for your study deck</p>
+                </div>
+            </div>
+
+            <div class="card-panel form-container">
+                <form id="add-flashcard-form" onsubmit="handleCardSubmit(event)">
+                    <div class="form-field">
+                        <label for="card-category">Subject Category</label>
+                        <input type="text" id="card-category" class="form-input" placeholder="e.g., Data Structure and Algorithm" required />
+                    </div>
+
+                    <div class="form-field">
+                        <label for="card-question">Question</label>
+                        <textarea id="card-question" class="form-input" placeholder="Enter your study question..." required></textarea>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="card-answer">Answer</label>
+                        <textarea id="card-answer" class="form-input" placeholder="Enter the correct answer..." required></textarea>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">Save Flashcard</button>
+                        <button type="button" class="btn-secondary" onclick="switchPage('dashboard', event)">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- PAGE 5: CATEGORIES -->
+        <section id="categories" class="app-section">
+            <div class="page-header">
+                <div>
+                    <h1 class="page-title">Categories</h1>
+                    <p class="page-subtitle">Browse flashcards organized by course subjects</p>
+                </div>
+            </div>
+
+            <div class="categories-grid">
+                <div class="category-card" onclick="filterByCategory('Object Oriented Programming 101')">
+                    <div class="cat-card-top">
+                        <div>
+                            <h3 class="cat-title">Object Oriented Programming 101</h3>
+                            <p class="cat-desc">Classes, objects, inheritance, polymorphism, and encapsulation concepts.</p>
+                        </div>
+                        <div class="cat-icon-box">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                        </div>
+                    </div>
+                    <div class="cat-card-footer">
+                        <span>5 Flashcards</span>
+                        <span>View Cards &rarr;</span>
+                    </div>
+                </div>
+
+                <div class="category-card" onclick="filterByCategory('Information Management')">
+                    <div class="cat-card-top">
+                        <div>
+                            <h3 class="cat-title">Information Management</h3>
+                            <p class="cat-desc">Databases, SQL queries, relational models, normalization, and data integrity.</p>
+                        </div>
+                        <div class="cat-icon-box">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+                        </div>
+                    </div>
+                    <div class="cat-card-footer">
+                        <span>4 Flashcards</span>
+                        <span>View Cards &rarr;</span>
+                    </div>
+                </div>
+
+                <div class="category-card" onclick="filterByCategory('Data Structure and Algorithm')">
+                    <div class="cat-card-top">
+                        <div>
+                            <h3 class="cat-title">Data Structure and Algorithm</h3>
+                            <p class="cat-desc">Arrays, linked lists, stacks, queues, trees, sorting, and graph traversals.</p>
+                        </div>
+                        <div class="cat-icon-box">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3v18"></path><circle cx="18" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><path d="M18 9a9 9 0 0 1-9 9"></path></svg>
+                        </div>
+                    </div>
+                    <div class="cat-card-footer">
+                        <span>3 Flashcards</span>
+                        <span>View Cards &rarr;</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
